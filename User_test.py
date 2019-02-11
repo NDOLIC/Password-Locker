@@ -38,11 +38,21 @@ def __init__(self,first_name,last_name,username,password):
 
     def test_save_User(self):
         '''
-        test_save_contact test case to test if the contact object is saved into
-         the contact list
+        test_save_contact test case to test if the User object is saved into
+         the User list
         '''
         self.new_User.save_User() # saving the new contact
         self.assertEqual(len(User.User_list),1)
+
+    def test_save_multiple_User(self):
+            '''
+            test_save_multiple_User to check if we can save multiple User
+            objects to our User_list
+            '''
+            self.new_User.save_User()
+            test_User = User("","","","") # new contact
+            test_User.save_User()
+            self.assertEqual(len(User.User_list),2)
 
 
 

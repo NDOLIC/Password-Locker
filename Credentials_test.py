@@ -36,7 +36,5 @@ class TestCredentials(unittest.TestCase):
         self.new_Credentials.save_Credentials() # saving the new Credentials
         self.assertEqual(len(Credentials.Credentials_list),1)
 
-
-
 if __name__ == '__main__':
     unittest.main()
