@@ -51,6 +51,14 @@ class Credentials:
             if Credentials.username == username:
                     return True
 
+
+    @classmethod
+    def display_Credentials(cls):
+        '''
+        method that returns the contact list
+        '''
+        return cls.Credentials_list
+
     #     return False
 
     def __init__(self,site,username,password):
