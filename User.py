@@ -15,24 +15,25 @@ class User:
 
             User.User_list.append(self)
 
-    def find_by_username(cls,username):
-        '''
-        Method that takes in a username and returns a User that matches that username.
+    # @classmethod
+    # def find_by_username(cls,username):
+    #     '''
+    #     Method that takes in a username and returns a User that matches that username.
 
-        Args:
-            username: username to search for
-        Returns :
-            User of person that matches the username.
-        '''
+    #     Args:
+    #         username: username to search for
+    #     Returns :
+    #         User of person that matches the username.
+    #     '''
 
-        for User in cls.User_list:
-            if User.username == username:
-                return User
+    #     for User in cls.User_list:
+    #         if User.username == username:
+    #             return User
 
     def __init__(self,first_name,last_name,username,password):
 
             
         self.first_name = first_name
         self.last_name = last_name
-        self.Username = username
-        self.Password = password
+        self.username = username
+        self.password = password
