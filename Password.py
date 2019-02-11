@@ -16,17 +16,9 @@ class User:
         self.Password = password
 
 
-
-
-
-
-
-
-
-
 class Credentials:
     """
-    Class that generates new instances of pass-word
+    Class that generates new instances of pass-word and site
     """
 
     pass
