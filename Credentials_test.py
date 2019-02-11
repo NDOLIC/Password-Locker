@@ -24,8 +24,8 @@ class TestCredentials(unittest.TestCase):
         '''
 
         self.assertEqual(self.new_Credentials.site,"")
-        self.assertEqual(self.new_Credentials.Username,"")
-        self.assertEqual(self.new_Credentials.Password,"")
+        self.assertEqual(self.new_Credentials.username,"")
+        self.assertEqual(self.new_Credentials.password,"")
 
 
     def test_save_Credentials(self):
@@ -67,18 +67,18 @@ class TestCredentials(unittest.TestCase):
             self.assertEqual(len(Credentials.Credentials_list),1)
 
 
-    # def test_find_Credentials_by_username(self):
-    #     '''
-    #     test to check if we can find a Credentials
-    #     '''
+    def test_find_Credentials_by_site(self):
+        '''
+        test to check if we can find a Credentials
+        '''
 
-    #     self.new_Credentials.save_Credentials()
-    #     test_Credentials = Credentials("","","") 
-    #     test_Credentials.save_Credentials()
+        self.new_Credentials.save_Credentials()
+        test_Credentials = Credentials("","","") 
+        test_Credentials.save_Credentials()
 
-    #     found_Credentials = Credentials.find_by_username("")
+        found_Credentials = Credentials.find_by_site("")
 
-    #     self.assertEqual(found_Credentials.username,test_Cresentials.username)
+        self.assertEqual(found_Credentials.site,test_Credentials.site)
 
     def test_Credentials_exists(self):
         '''
