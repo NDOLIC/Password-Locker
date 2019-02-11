@@ -27,13 +27,6 @@ class TestUser(unittest.TestCase):
         self.assertEqual(self.new_User.Username,"")
         self.assertEqual(self.new_User.Password,"")
         
-def __init__(self,first_name,last_name,username,password):
-
-        
-        self.first_name = first_name
-        self.last_name = last_name
-        self.Username = username
-        self.Password = password
 
 
     def test_save_User(self):
@@ -44,15 +37,22 @@ def __init__(self,first_name,last_name,username,password):
         self.new_User.save_User() # saving the new contact
         self.assertEqual(len(User.User_list),1)
 
+
+    def tearDown(self):
+            '''
+            tearDown method that does clean up after each test case has run.
+            '''
+            User.User_list = []
+
     def test_save_multiple_User(self):
-            '''
-            test_save_multiple_User to check if we can save multiple User
-            objects to our User_list
-            '''
-            self.new_User.save_User()
-            test_User = User("","","","") # new contact
-            test_User.save_User()
-            self.assertEqual(len(User.User_list),2)
+        '''
+        test_save_multiple_User to check if we can save multiple User
+        objects to our User_list
+        '''
+        self.new_User.save_User()
+        test_User = User("","","","") 
+        test_User.save_User()
+        self.assertEqual(len(User.User_list),2)
 
 
 
