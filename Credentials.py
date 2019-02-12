@@ -59,7 +59,10 @@ class Credentials:
         '''
         return cls.Credentials_list
 
-    #     return False
+    # @classmethod
+    # def copy_username(cls,username):
+    #     Credentials_found = Credentials.find_by_username(username)
+    #     pyperclip.copy(Credentials_found.username)
 
     def __init__(self,site,username,password):
         self.site = site
