@@ -70,19 +70,18 @@ def display_Credentials():
 
 
 def main():
-    print("Hello Welcome to your user list. What is your first_name?")
-    print("Hello Welcome to your user list. What is your last_name?")
-    
+    print("Hello Welcome to your user list. What is your username?")
     username = input()
+    print("Hello Welcome to your user list. What is your Password?")
     password = input()
 
     print(f"Hello {username}")
     print('\n')
 
     while True:
-            print("Use these short codes : cc - create a new User,cd - Create a new Credentials dc - display Credentials,sv - Save a Credentials, fc -find a Credentials, ex -exit the Credentials list ")
+           print("Use these short codes : cc - create a new User,cd - Create a new Credentials dc - display Credentials,sv - Save a Credentials, fc -find a Credentials, ex -exit the Credentials list ")
 
-    short_code = input().lower()
+           short_code = input().lower()
 
     if short_code == 'cc':
             print("New User")
@@ -128,9 +127,9 @@ def main():
 
     elif short_code == 'dc':
 
-        if display_Credentials():
-            print("Your Credentials are:")
-            print('\n')
+    if display_Credentials():
+                            print("Your Credentials are:")
+                            print('\n')
 
             for Credentials in display_Credentials():
                     print(f"{Credentials.site} {Credentials.username} {Credentials.password_}")
@@ -141,24 +140,26 @@ def main():
             print("You are not registered yet")
             print('\n')
 
-                    # elif short_code == 'fc':
+    elif short_code == 'fc':
 
-                    #         print("Enter the number you want to search for")
+            print("Enter the site you want to search for")
 
-                    #         search_number = input()
-                    #         if check_existing_contacts(search_number):
-                    #                 search_contact = find_contact(search_number)
-                    #                 print(f"{search_contact.first_name} {search_contact.last_name}")
-                    #                 print('-' * 20)
+            search_site = input()
+    if check_existing_Credentials(search_site):
+                search_Credentials = find_Credentials(search_site)
+                print(f"{search_Credentials.username} {search_Credentials.password}")
+                print('-' * 20)
 
-                    #                 print(f"Phone number.......{search_contact.phone_number}")
-                    #                 print(f"Email address.......{search_contact.email}")
-                    #         else:
-                    #                 print("That contact does not exist")
+                print(f"Website.......{search_Credentials.site}")
+                print(f"Email address.......{search_Credentials.username}")
+    else:
+        print("That Credentials does not exist")
 
-                    # elif short_code == "ex":
-                    #         print("Bye .......")
-                    #         break
-                    # else:
-                    #         print("I really didn't get that. Please use the short codes")
+    elif short_code == "ex":
+        print("Bye .......")
+        break
+    else:
+        print("I really didn't get that. Please use the short codes")
 
+    if __name__ == '__main__':
+                main()
