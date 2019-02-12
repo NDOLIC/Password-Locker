@@ -70,96 +70,90 @@ def display_Credentials():
 
 
 def main():
-    print("Hello Welcome to your user list. What is your username?")
+    print ("First_name ....")
+    first_name = input()
+
+    print("Last_name ...")
+    last_name = input()
+
+    print("What is your username?")
     username = input()
-    print("Hello Welcome to your user list. What is your Password?")
+
+    print("What is your Password?")
     password = input()
 
     print(f"Hello {username}")
+    print(f"Hello {password}")
     print('\n')
 
+
+    save_User(create_User(first_name,last_name,username,password)) 
+    print ('\n')
+    print(f"New User {first_name} {last_name} {username} {password} created")
+    print ('\n')
     while True:
-           print("Use these short codes : cc - create a new User,cd - Create a new Credentials dc - display Credentials,sv - Save a Credentials, fc -find a Credentials, ex -exit the Credentials list ")
+        print("Use these short codes : cd - Create a new Credentials dc - display Credentials,sv - Save a Credentials, fc -find a Credentials, dl -Delete credentials, ou -exit the Credentials list ")
+        short_code = input().lower()
+        if short_code == 'cd':
+                print("New Credentials")
+                print("-"*10)
 
-           short_code = input().lower()
+                print ("Website_Name ....")
+                site = input()
 
-    if short_code == 'cc':
-            print("New User")
-            print("-"*10)
+                print("User_Name ...")
+                username = input()
 
-            print ("First_name ....")
-            first_name = input()
+                print("Password ...")
+                password = input()
 
-
-            print("Last_name ...")
-            last_name = input()
-
-            print("User_Name ...")
-            username = input()
-
-            print("Password ...")
-            password = input()
-
-            save_User(create_User(first_name,last_name,username,password)) # create and save new user.
-            print ('\n')
-            print(f"New User {first_name} {last_name} created")
-            print ('\n')
+                save_Credentials(create_Credentials(site,username,password)) # create and save new Credentials.
+                print ('\n')
+                print(f"New Credentials {site} { username} {password} created")
+                print ('\n')
 
 
-    elif short_code == 'cd':
-            print("New Credentials")
-            print("-"*10)
+        elif short_code == 'dc':
 
-            print ("Website_Name ....")
-            site = input()
+            if display_Credentials():
+                print("Your Credentials are:")
+                print('\n')
 
-            print("User_Name ...")
-            username = input()
+                for Credentials in display_Credentials():
+                        print(f"{Credentials.site} {Credentials.username} {Credentials.password_}")
 
-            print("Password ...")
-            password = input()
+                print('\n')
+            else:
+                    print('\n')
+                    print("You are not registered yet")
+                    print('\n')
 
-            save_Credentials(create_Credentials(site,username,password)) # create and save new Credentials.
-            print ('\n')
-            print(f"New Credentials {site} { username} created")
-            print ('\n')
-
-
-    elif short_code == 'dc':
-
-    if display_Credentials():
-                            print("Your Credentials are:")
-                            print('\n')
-
-            for Credentials in display_Credentials():
-                    print(f"{Credentials.site} {Credentials.username} {Credentials.password_}")
-
-            print('\n')
-        else:
-            print('\n')
-            print("You are not registered yet")
-            print('\n')
-
-    elif short_code == 'fc':
-
+        elif short_code == 'fc':
             print("Enter the site you want to search for")
 
             search_site = input()
-    if check_existing_Credentials(search_site):
+            if check_existing_Credentials(search_site):
                 search_Credentials = find_Credentials(search_site)
                 print(f"{search_Credentials.username} {search_Credentials.password}")
                 print('-' * 20)
-
                 print(f"Website.......{search_Credentials.site}")
-                print(f"Email address.......{search_Credentials.username}")
-    else:
-        print("That Credentials does not exist")
+                print(f"User-name.......{search_Credentials.username}")
+            else:
+                print("That Credentials does not exist")
 
-    elif short_code == "ex":
-        print("Bye .......")
-        break
-    else:
-        print("I really didn't get that. Please use the short codes")
+        elif short_code == 'dl':
+            print("Are you sure you want to Delete your credentials")
+            del_Credentials(create_Credentials(site,username,password))  
+            print ('\n')
+            print(f"New Credentials {site} { username} {password} Deleted")
+            print ('\n')
 
-    if __name__ == '__main__':
-                main()
+        elif short_code == "ou":
+            print("Bye .......")
+            break
+
+        else:
+            print("Please use the short codes")
+
+if __name__ == '__main__':
+            main()
